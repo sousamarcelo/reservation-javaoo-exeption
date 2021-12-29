@@ -25,6 +25,7 @@ public class ProgramTestDate {
 		System.out.println(res.duration());
 		
 		scanner.close();
+		
 		} catch (DomainExeption d) {
 			System.out.println("error: " + d.getMessage());
 		}

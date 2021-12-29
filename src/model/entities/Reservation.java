@@ -62,12 +62,20 @@ public class Reservation {
 		
 		Date date = new Date();
 		
-		if (!checkout.after(checkin)) {
+		if (!checkOut.after(checkIn)) {
 			throw new DomainExeption(" Check-out date must be after check-in date ");
 		}
 		
-		if (checkin.before(date) && checkout.before(date)) {
+		if (checkIn.before(date) || checkOut.before(date)) {
 			throw new DomainExeption(" Reservation dates for update must be future dates");
-		}		
+		}	
+		
+		this.checkin = checkIn;
+		this.checkout = checkOut;
 	}
+	
+	@Override
+	public String toString() {
+		return "Room " + getRoomNumber() + ", check-in: " + sdf.format(getCheckIn()) + ", check-out: " + sdf.format(getCheckOut()) + ", " + duration() + " nights";
+	}	
 }
